@@ -1,0 +1,308 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .orderWrap {
+    @include mixins.flex_box(space-between, flex-end);
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .order {
+    width: 575px;
+  }
+
+  .orderForm {
+    margin-top: 50px;
+  }
+
+  .formRow {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .formCol {
+    width: 280px;
+  }
+
+  .formInputStyle {
+    width: 100%;
+    height: 50px;
+    padding: 13px 14px;
+    border: 1px solid $border_color;
+    border-radius: 4px;
+    font-size: max(18px, 16px);
+    font-size: #8b8b8b;
+    font-family: $outfit_font;
+  }
+
+  .orderTotal {
+    width: 470px;
+  }
+
+  .paymentBox {
+    margin: 30px 0;
+  }
+
+  .paymentItem {
+    @include mixins.flex_box(flex-start, center);
+    margin-bottom: 20px;
+    border: 1px solid $border_color;
+    padding: 7px 15px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .paymentDot {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid $border_color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      background-color: #000;
+      border-radius: 50%;
+      transition: 0.2s width, 0.2s height ease-out;
+    }
+
+    &.active {
+      &:before {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .totalbutton {
+    width: 262px;
+    padding: 22px 15px;
+    margin: 0 0 0 auto;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@media (--sp) {
+  .title {
+    margin-bottom: vw(50);
+  }
+
+  .order {
+    width: 100%;
+    margin-bottom: vw(60);
+  }
+
+  .orderForm {
+    margin-top: vw(50);
+  }
+
+  .formRow {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: vw(25);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .formCol {
+    width: vw(340);
+  }
+
+  .formInputStyle {
+    width: 100%;
+    height: max(vw(55), 45px);
+    padding: vw(13) vw(14);
+    border: 1px solid $border_color;
+    border-radius: vw(4);
+    font-size: max(vw(20), 16px);
+    font-size: #8b8b8b;
+    font-family: $outfit_font;
+  }
+
+  .orderTotal {
+    width: 100%;
+  }
+
+  .paymentBox {
+    margin: vw(30) 0;
+  }
+
+  .paymentItem {
+    @include mixins.flex_box(flex-start, center);
+    margin-bottom: vw(20);
+    border: 1px solid $border_color;
+    padding: vw(10) vw(15);
+    font-size: vw(20);
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .paymentDot {
+    position: relative;
+    width: vw(20);
+    height: vw(20);
+    margin-right: vw(12);
+    border-radius: 50%;
+    border: 1px solid $border_color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      background-color: #000;
+      border-radius: 50%;
+      transition: 0.2s width, 0.2s height ease-out;
+    }
+
+    &.active {
+      &:before {
+        width: vw(14);
+        height: vw(14);
+      }
+    }
+  }
+
+  .totalbutton {
+    width: vw(350);
+    padding: vw(30) vw(15);
+    margin-top: vw(20);
+    border: none;
+    box-shadow: none;
+    background-color: #000;
+    font-size: vw(20);
+    color: #fff;
+    text-align: center;
+  }
+}
+
+@media (--tb) {
+  .orderWrap {
+    @include mixins.flex_box(space-between, flex-end);
+  }
+
+  .title {
+    margin-bottom: pw(30);
+  }
+
+  .order {
+    width: pw(575);
+  }
+
+  .orderForm {
+    margin-top: pw(50);
+  }
+
+  .formRow {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: pw(30);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .formCol {
+    width: pw(280);
+  }
+
+  .formInputStyle {
+    width: 100%;
+    height: pw(50);
+    padding: pw(13) pw(14);
+    border: 1px solid $border_color;
+    border-radius: pw(4);
+    font-size: max(pw(18), pw(16));
+    font-size: #8b8b8b;
+    font-family: $outfit_font;
+  }
+
+  .orderTotal {
+    width: pw(470);
+  }
+
+  .paymentBox {
+    margin: pw(30) 0;
+  }
+
+  .paymentItem {
+    @include mixins.flex_box(flex-start, center);
+    margin-bottom: pw(20);
+    border: 1px solid $border_color;
+    padding: pw(7) pw(15);
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .paymentDot {
+    position: relative;
+    width: pw(16);
+    height: pw(16);
+    margin-right: pw(10);
+    border-radius: 50%;
+    border: 1px solid $border_color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      background-color: #000;
+      border-radius: 50%;
+      transition: 0.2s width, 0.2s height ease-out;
+    }
+
+    &.active {
+      &:before {
+        width: pw(10);
+        height: pw(10);
+      }
+    }
+  }
+
+  .totalbutton {
+    width: pw(262);
+    padding: pw(22) pw(15);
+    margin: 0 0 0 auto;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,205 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .boxTtl {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .contactWrap {
+    @include mixins.flex_box(space-between, center);
+  }
+
+  .contactImage {
+    width: 580px;
+  }
+
+  .contactInfor {
+    width: 650px;
+  }
+
+  .inforItem {
+    margin-bottom: 30px;
+  }
+
+  .inforHead {
+    margin-bottom: 20px;
+    font-size: 22px;
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .inforTxt {
+    margin-bottom: 15px;
+    font-size: 16px;
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 400;
+    color: $second_color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $second_color;
+    }
+  }
+
+  .number {
+    pointer-events: none;
+  }
+
+  .inforBtn {
+    margin-top: 30px;
+    a {
+      display: inline-block;
+      padding: 20px 40px;
+      border: 1px solid #000;
+      font-size: 16px;
+      font-weight: 400;
+      color: $primary_color;
+      text-align: center;
+      transition: 0.3s background-color, 0.3s color ease-out;
+
+      &:hover {
+        background-color: #000;
+        color: $white_color;
+      }
+    }
+  }
+}
+
+@media (--sp) {
+  .boxTtl {
+    margin-bottom: vw(100);
+    text-align: center;
+  }
+
+  .contactImage {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .contactInfor {
+    width: 100%;
+  }
+
+  .inforItem {
+    margin-bottom: vw(30);
+  }
+
+  .inforHead {
+    margin-bottom: vw(20);
+    font-size: vw(26);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .inforTxt {
+    margin-bottom: vw(15);
+    font-size: vw(20);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 400;
+    color: $second_color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $second_color;
+    }
+  }
+
+  .number {
+    pointer-events: none;
+  }
+
+  .inforBtn {
+    margin-top: vw(40);
+    a {
+      display: inline-block;
+      padding: vw(20) vw(40);
+      border: 1px solid #000;
+      font-size: vw(20);
+      font-weight: 400;
+      color: $primary_color;
+      text-align: center;
+    }
+  }
+}
+
+@media (--tb) {
+  .boxTtl {
+    margin-bottom: pw(50);
+    text-align: center;
+  }
+  .contactWrap {
+    @include mixins.flex_box(space-between, center);
+  }
+
+  .contactImage {
+    width: pw(580);
+  }
+
+  .contactInfor {
+    width: pw(650);
+  }
+
+  .inforItem {
+    margin-bottom: pw(30);
+  }
+
+  .inforHead {
+    margin-bottom: pw(20);
+    font-size: pw(22);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .inforTxt {
+    margin-bottom: pw(15);
+    font-size: pw(16);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    font-weight: 400;
+    color: $second_color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $second_color;
+    }
+  }
+
+  .number {
+    pointer-events: none;
+  }
+
+  .inforBtn {
+    margin-top: pw(30);
+    a {
+      display: inline-block;
+      padding: pw(20) pw(40);
+      border: 1px solid #000;
+      font-size: pw(16);
+      font-weight: 400;
+      color: $primary_color;
+      text-align: center;
+      transition: 0.3s background-color, 0.3s color ease-out;
+
+      &:hover {
+        background-color: #000;
+        color: $white_color;
+      }
+    }
+  }
+}

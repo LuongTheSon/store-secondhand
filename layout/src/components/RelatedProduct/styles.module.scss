@@ -1,0 +1,45 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .relatedBox {
+    width: 1413px;
+    margin: 175px auto 0;
+    text-align: center;
+  }
+
+  .relatedList {
+    margin-top: 22px;
+    @include mixins.grid_box(5, 30px 28px);
+    text-align: left;
+  }
+}
+
+@media (--sp) {
+  .relatedBox {
+    width: 100%;
+    margin: vw(120) auto 0;
+    text-align: center;
+  }
+
+  .relatedList {
+    margin-top: vw(30);
+    @include mixins.grid_box(2, vw(30) vw(28));
+    text-align: left;
+  }
+}
+
+@media (--tb) {
+  .relatedBox {
+    width: pw(1413);
+    margin: pw(175) auto 0;
+    text-align: center;
+  }
+
+  .relatedList {
+    margin-top: pw(22);
+    @include mixins.grid_box(5, pw(30) pw(28));
+    text-align: left;
+  }
+}

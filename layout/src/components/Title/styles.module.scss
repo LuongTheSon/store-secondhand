@@ -1,0 +1,60 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .title {
+    display: inline-block;
+    position: relative;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+    color: #343434;
+  }
+
+  .titleSm {
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #707070;
+  }
+}
+
+@media (--sp) {
+  .title {
+    display: inline-block;
+    position: relative;
+    font-size: vw(40);
+    font-weight: 600;
+    letter-spacing: ls(10);
+    text-align: center;
+    color: #343434;
+  }
+
+  .titleSm {
+    font-size: vw(40);
+    font-weight: 400;
+    letter-spacing: ls(10);
+    color: #707070;
+  }
+}
+
+@media (--tb) {
+  .title {
+    display: inline-block;
+    position: relative;
+    font-size: pw(35);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+    color: #343434;
+  }
+
+  .titleSm {
+    font-size: pw(35);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #707070;
+  }
+}

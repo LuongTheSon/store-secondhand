@@ -1,0 +1,44 @@
+@mixin btn($w, $h, $color, $radius) {
+  outline: none;
+  border: 1px solid #333;
+  width: $w;
+  height: $h;
+  background-color: $color;
+  border-radius: $radius;
+}
+
+@mixin flex_box($x, $y) {
+  display: flex;
+  justify-content: $x;
+  align-items: $y;
+}
+
+@mixin grid_box($num, $gap) {
+  display: grid;
+  grid-template-columns: repeat($num, 1fr);
+  gap: $gap;
+}
+
+@mixin hover_border($b, $h, $border_color) {
+  a {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: $b;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: $h;
+      background-color: $border_color;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}

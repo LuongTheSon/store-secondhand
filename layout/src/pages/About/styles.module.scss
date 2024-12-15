@@ -1,0 +1,93 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .boxTtl {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .aboutInfor {
+    @include mixins.flex_box(space-between, center);
+  }
+
+  .aboutImage {
+    width: 645px;
+    margin-right: 30px;
+  }
+
+  .aboutText {
+    width: 570px;
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: $second_color;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (--sp) {
+  .boxTtl {
+    margin-bottom: vw(40);
+    text-align: center;
+  }
+
+  .aboutImage {
+    width: 100%;
+    margin-bottom: vw(40);
+  }
+
+  .aboutText {
+    width: 100%;
+    text-align: center;
+
+    p {
+      font-size: vw(20);
+      font-weight: 400;
+      margin-bottom: vw(20);
+      color: $second_color;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (--tb) {
+  .boxTtl {
+    margin-bottom: pw(40);
+    text-align: center;
+  }
+
+  .aboutInfor {
+    @include mixins.flex_box(space-between, center);
+  }
+
+  .aboutImage {
+    width: pw(645);
+    margin-right: pw(30);
+  }
+
+  .aboutText {
+    width: pw(570);
+
+    p {
+      font-size: pw(18);
+      font-weight: 400;
+      margin-bottom: pw(20);
+      color: $second_color;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

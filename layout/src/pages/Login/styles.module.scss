@@ -1,0 +1,210 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .login {
+    padding-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  .loginTitle {
+    margin-bottom: 50px;
+    font-size: 40px;
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    color: #414141;
+    text-align: center;
+  }
+
+  .loginForm {
+    width: 520px;
+    margin: 0 auto;
+  }
+
+  .loginRow {
+    width: 100%;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      height: 50px;
+      padding: 5px 15px;
+      border: 1px solid $border_color;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: 400;
+      font-family: $outfit_font;
+
+      &::placeholder {
+        font-size: 14px;
+        color: $second_color;
+      }
+    }
+  }
+
+  .loginChange {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: 40px;
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: ls(10);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+
+  .loginButton {
+    display: block;
+    width: 150px;
+    padding: 15px 5px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    background-color: #000;
+    font-size: 20px;
+    letter-spacing: ls(10);
+    color: #fff;
+    text-align: center;
+  }
+}
+
+@media (--sp) {
+  .login {
+    padding-top: vw(50);
+    margin-bottom: vw(100);
+  }
+
+  .loginTitle {
+    margin-bottom: vw(50);
+    font-size: vw(36);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    color: #414141;
+    text-align: center;
+  }
+
+  .loginForm {
+    max-width: vw(650);
+    margin: 0 auto;
+  }
+
+  .loginRow {
+    width: 100%;
+    margin-bottom: vw(20);
+
+    input {
+      width: 100%;
+      height: max(vw(50), 35px);
+      padding: vw(5) vw(15);
+      border: 1px solid $border_color;
+      border-radius: vw(5);
+      font-size: max(vw(18), 16px);
+      font-weight: 400;
+      font-family: $outfit_font;
+
+      &::placeholder {
+        font-size: max(vw(16), 12px);
+        color: $second_color;
+      }
+    }
+  }
+
+  .loginChange {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: vw(40);
+
+    p {
+      font-size: max(vw(18), 14px);
+      font-weight: 400;
+      letter-spacing: ls(10);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+
+  .loginButton {
+    display: block;
+    width: vw(250);
+    padding: vw(15) vw(5);
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    background-color: #000;
+    font-size: max(vw(20), 16px);
+    letter-spacing: ls(10);
+    color: #fff;
+    text-align: center;
+  }
+}
+
+@media (--tb) {
+  .login {
+    padding-top: pw(50);
+    margin-bottom: pw(100);
+  }
+
+  .loginTitle {
+    margin-bottom: pw(50);
+    font-size: pw(40);
+    letter-spacing: ls(10);
+    line-height: 1.5;
+    color: #414141;
+    text-align: center;
+  }
+
+  .loginForm {
+    width: pw(520);
+    margin: 0 auto;
+  }
+
+  .loginRow {
+    width: 100%;
+    margin-bottom: pw(20);
+
+    input {
+      width: 100%;
+      height: pw(50);
+      padding: pw(5) pw(15);
+      border: 1px solid $border_color;
+      border-radius: pw(5);
+      font-size: pw(18);
+      font-weight: 400;
+      font-family: $outfit_font;
+
+      &::placeholder {
+        font-size: pw(14);
+        color: $second_color;
+      }
+    }
+  }
+
+  .loginChange {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: pw(40);
+
+    p {
+      font-size: pw(16);
+      font-weight: 400;
+      letter-spacing: ls(10);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+
+  .loginButton {
+    display: block;
+    width: pw(150);
+    padding: pw(15) pw(5);
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    background-color: #000;
+    font-size: pw(20);
+    letter-spacing: ls(10);
+    color: #fff;
+    text-align: center;
+  }
+}

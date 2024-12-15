@@ -1,0 +1,307 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .collectionWrap {
+    @include mixins.flex_box(space-between, flex-start);
+    padding-bottom: 50px;
+  }
+
+  .filters {
+    width: 315px;
+  }
+
+  .filtersTtl {
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #343434;
+  }
+
+  .filtersBox {
+    border: 1px solid #c8c8c8;
+    padding: 15px 20px;
+    margin-bottom: 23px;
+  }
+
+  .filtersBoxName {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #212121;
+  }
+
+  .filtersCheckbox {
+    @include mixins.flex_box(flex-start, center);
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #272727;
+    letter-spacing: 0;
+    font-weight: 300;
+
+    input {
+      width: 20px;
+      height: 20px;
+      margin-right: 11px;
+    }
+  }
+
+  .product {
+    width: 900px;
+  }
+
+  .productTop {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: 33px;
+  }
+
+  .productSelect {
+    width: 315px;
+    height: 50px;
+    border: 1px solid #c8c8c8;
+    font-size: 16px;
+    letter-spacing: 0;
+    padding: 10px 20px;
+  }
+
+  .productList {
+    @include mixins.grid_box(3, 40px 20px);
+  }
+
+  .pagination {
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  .paginationBtn {
+    padding: 8px 14px;
+    margin: 0 4px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid $border_color;
+    background-color: $white_color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &.active {
+      background-color: #000;
+      border-color: #000;
+      color: white;
+      cursor: default;
+    }
+  }
+
+  .paginationBtnDisable {
+    pointer-events: none;
+    padding: 8px 12px;
+    color: #000;
+  }
+}
+
+@media (--sp) {
+  .collectionWrap {
+    padding-bottom: vw(50);
+  }
+
+  .filters {
+    margin-bottom: vw(80);
+  }
+
+  .filtersTtl {
+    margin-bottom: vw(30);
+    font-size: vw(25);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #343434;
+  }
+
+  .filtersBox {
+    @include mixins.flex_box(flex-start, flex-start);
+    flex-wrap: wrap;
+    border: 1px solid #c8c8c8;
+    padding: vw(15) vw(20);
+    margin-bottom: vw(23);
+  }
+
+  .filtersBoxName {
+    width: 100%;
+    margin-bottom: vw(15);
+    font-size: vw(20);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #212121;
+  }
+
+  .filtersCheckbox {
+    @include mixins.flex_box(flex-start, center);
+    margin-right: vw(20);
+    font-size: vw(18);
+    color: #272727;
+    letter-spacing: 0;
+    font-weight: 300;
+
+    input {
+      width: vw(25);
+      height: vw(25);
+      margin-right: vw(8);
+    }
+  }
+
+  .productTop {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: vw(50);
+  }
+
+  .productSelect {
+    width: vw(230);
+    height: vw(50);
+    border: 1px solid #c8c8c8;
+    font-size: vw(18);
+    letter-spacing: 0;
+    padding: vw(10) vw(15);
+  }
+
+  .productList {
+    @include mixins.grid_box(2, vw(40) vw(20));
+  }
+
+  .pagination {
+    margin-top: vw(80);
+    text-align: center;
+  }
+
+  .paginationBtn {
+    padding: vw(10) vw(16);
+    margin: 0 vw(4);
+    font-size: vw(18);
+    border-radius: vw(5);
+    border: 1px solid $border_color;
+    background-color: $white_color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &.active {
+      background-color: #000;
+      border-color: #000;
+      color: white;
+      cursor: default;
+    }
+  }
+
+  .paginationBtnDisable {
+    pointer-events: none;
+    padding: vw(10) vw(14);
+    color: #000;
+  }
+}
+
+@media (--tb) {
+  .collectionWrap {
+    @include mixins.flex_box(space-between, flex-start);
+    padding-bottom: pw(50);
+  }
+
+  .filters {
+    width: pw(315);
+  }
+
+  .filtersTtl {
+    margin-bottom: pw(30);
+    font-size: pw(25);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #343434;
+  }
+
+  .filtersBox {
+    border: 1px solid #c8c8c8;
+    padding: pw(15) pw(20);
+    margin-bottom: pw(23);
+  }
+
+  .filtersBoxName {
+    margin-bottom: pw(20);
+    font-size: pw(16);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #212121;
+  }
+
+  .filtersCheckbox {
+    @include mixins.flex_box(flex-start, center);
+    margin-bottom: pw(10);
+    font-size: pw(16);
+    color: #272727;
+    letter-spacing: 0;
+    font-weight: 300;
+
+    input {
+      width: pw(20);
+      height: pw(20);
+      margin-right: pw(11);
+    }
+  }
+
+  .product {
+    width: pw(900);
+  }
+
+  .productTop {
+    @include mixins.flex_box(space-between, center);
+    margin-bottom: pw(33);
+  }
+
+  .productSelect {
+    width: pw(315);
+    height: pw(50);
+    border: 1px solid #c8c8c8;
+    font-size: pw(16);
+    letter-spacing: 0;
+    padding: pw(10) pw(20);
+  }
+
+  .productList {
+    @include mixins.grid_box(3, pw(40) pw(20));
+  }
+
+  .pagination {
+    margin-top: pw(80);
+    text-align: center;
+  }
+
+  .paginationBtn {
+    padding: pw(8) pw(14);
+    margin: 0 pw(4);
+    font-size: pw(14);
+    border-radius: pw(3);
+    border: 1px solid $border_color;
+    background-color: $white_color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &.active {
+      background-color: #000;
+      border-color: #000;
+      color: white;
+      cursor: default;
+    }
+  }
+
+  .paginationBtnDisable {
+    pointer-events: none;
+    padding: pw(8) pw(12);
+    color: #000;
+  }
+}

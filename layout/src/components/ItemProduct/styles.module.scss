@@ -1,0 +1,57 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/media.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+@media (--pc) {
+  .productName {
+    margin-top: 21px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+
+  .productPrice {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+}
+
+@media (--sp) {
+  .productName {
+    margin-top: vw(20);
+    font-size: vw(18);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+
+  .productPrice {
+    margin-top: vw(5);
+    font-size: vw(18);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+}
+
+@media (--tb) {
+  .productName {
+    margin-top: pw(21);
+    font-size: pw(14);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+
+  .productPrice {
+    margin-top: pw(6);
+    font-size: pw(16);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #494949;
+  }
+}
