@@ -22,8 +22,5 @@ export default defineConfig({
       }
     },
     postcss: path.resolve(__dirname, './postcss.config.js')
-  },
-  build: {
-    outDir: 'dist'
   }
 });
