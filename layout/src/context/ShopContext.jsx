@@ -3,21 +3,24 @@ import { products } from '@assets/images/assets';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
+// Create the ShopContext
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  const [search, setSearch] = useState('');
-  const [showSearch, setShowSearch] = useState(false);
-  const [cartItems, setCartItems] = useState({});
-  const delivery_free = 40000;
-  const navigate = useNavigate();
+  const [search, setSearch] = useState(''); // Search term state
+  const [showSearch, setShowSearch] = useState(false); // Control search bar visibility
+  const [cartItems, setCartItems] = useState({}); // Cart items state
+  const delivery_free = 40000; // Distance cost
+  const navigate = useNavigate(); // React Router's navigation hook
 
+  // Format currency to Vietnamese Dong (VNĐ)
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('vi-VN').format(amount) + 'VNĐ';
   };
 
+  // Add product to the cart
   const addToCart = (cartId, size) => {
-    let cartData = structuredClone(cartItems);
+    let cartData = structuredClone(cartItems); // Clone the current cart items
 
     if (!size) {
       toast('Chưa thêm size sản phẩm!');
@@ -33,6 +36,7 @@ const ShopContextProvider = (props) => {
     setCartItems(cartData);
   };
 
+  // Get total item count in the cart
   const getCartCount = () => {
     let totalCount = 0;
     for (const items in cartItems) {
@@ -49,6 +53,7 @@ const ShopContextProvider = (props) => {
     return totalCount;
   };
 
+  // Update the quantity of a specific product size in the cart
   const updateCartCount = async (itemId, size, quantity) => {
     let cartData = structuredClone(cartItems);
 
@@ -57,6 +62,7 @@ const ShopContextProvider = (props) => {
     setCartItems(cartData);
   };
 
+  // Calculate the total amount for all items in the cart
   const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
@@ -74,10 +80,12 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  // Clear the entire cart
   const clearCart = () => {
     setCartItems([]);
   };
 
+  // Context value object
   const value = {
     products,
     formatCurrency,

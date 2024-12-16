@@ -10,52 +10,53 @@ import autoprefixer from 'autoprefixer';
 import postcssCachebuster from 'postcss-cachebuster';
 import postcssReporter from 'postcss-reporter';
 import postcssCsso from 'postcss-csso';
+import postcssCachebusterLegacy from 'postcss-cachebuster';
 
 const paths = {
-  appDest: 'dist' // Đường dẫn tới thư mục build
+  appDest: 'dist' // Path to the build directory
 };
 
-const baseFontSize = 10; // rem tính theo px
-const pcDesignWidth = 1400; // Chiều rộng thiết kế PC
-const pcDesignHeight = 1400; // Chiều cao thiết kế PC
-const spDesignWidth = 768; // Chiều rộng thiết kế SP
-const spDesignHeight = 736; // Chiều cao thiết kế SP
+const baseFontSize = 10; // rem calculated in px
+const pcDesignWidth = 1400; // PC design width
+const pcDesignHeight = 1400; // PC design height
+const spDesignWidth = 768; // SP (Smartphone) design width
+const spDesignHeight = 736; // SP (Smartphone) design height
 
 const getRoundedVw = (num) => Math.round(num * 10) / 10;
 
 export default {
   map: false,
   plugins: [
-    postcssImport(), // Import các file CSS
-    postcssNested(), // Hỗ trợ nested CSS
-    postcssCustomMedia(), // Sử dụng custom media queries
-    postcssHexrgba(), // Hỗ trợ màu sắc dạng hex với alpha
-    postcssPercentage(), // Hỗ trợ chuyển đổi sang giá trị phần trăm
+    postcssImport(), // Import CSS files
+    postcssNested(), // Support nested CSS
+    postcssCustomMedia(), // Use custom media queries
+    postcssHexrgba(), // Support hex colors with alpha
+    postcssPercentage(), // Support conversion to percentage values
     postcssFunctions({
       functions: {
         px(num) {
-          return `${((num * pcDesignWidth) / spDesignWidth).toFixed(0)}px`; // Chuyển đổi px theo tỷ lệ PC
+          return `${((num * pcDesignWidth) / spDesignWidth).toFixed(0)}px`; // Convert px according to the PC ratio
         },
         rem(num) {
-          return `${num / baseFontSize}rem`; // Chuyển đổi rem
+          return `${num / baseFontSize}rem`; // Convert to rem
         },
         pw(num) {
-          return `${(num / pcDesignWidth) * 100}vw`; // Phần trăm chiều rộng PC
+          return `${(num / pcDesignWidth) * 100}vw`; // Percentage of PC width
         },
         ph(num) {
-          return `${(num / pcDesignHeight) * 100}vh`; // Phần trăm chiều cao PC
+          return `${(num / pcDesignHeight) * 100}vh`; // Percentage of PC height
         },
         vw(num) {
-          return `${(num / spDesignWidth) * 100}vw`; // Phần trăm chiều rộng SP
+          return `${(num / spDesignWidth) * 100}vw`; // Percentage of SP width
         },
         vh(num) {
-          return `${(num / spDesignHeight) * 100}vh`; // Phần trăm chiều cao SP
+          return `${(num / spDesignHeight) * 100}vh`; // Percentage of SP height
         },
         lh(fz, psd) {
-          return (psd / fz).toFixed(2); // Tính toán line-height
+          return (psd / fz).toFixed(2); // Calculate line-height
         },
         ls(psd) {
-          return `${psd / 1000}em`; // Tính toán letter-spacing
+          return `${psd / 1000}em`; // Calculate letter-spacing
         },
         hv(num) {
           if (num >= 0) {
@@ -70,18 +71,21 @@ export default {
         }
       }
     }),
-    postcssMomentumScrolling(['auto', 'scroll']), // Hỗ trợ động lượng cuộn
-    postcssWillChangeTransition(), // Tối ưu hóa will-change
-    autoprefixer(), // Thêm prefix cho trình duyệt cũ
+    postcssMomentumScrolling(['auto', 'scroll']), // Support momentum scrolling
+    postcssWillChangeTransition(), // Optimize will-change
+    autoprefixer(), // Add prefixes for older browsers
     postcssCachebuster({
       type: 'checksum',
-      imagesPath: `${paths.appDest}` // Đường dẫn hình ảnh
+      imagesPath: `${paths.appDest}` // Path to images
+    }),
+    postcssCachebusterLegacy({
+      cssPath: './src/assets/css'
     }),
     postcssReporter({
-      clearReportedMessages: true // Dọn dẹp thông báo sau khi build
+      clearReportedMessages: true // Clear messages after build
     }),
     postcssCsso({
-      restructure: false // Giữ nguyên cấu trúc CSS khi nén
+      restructure: false // Preserve CSS structure when minifying
     })
   ]
 };

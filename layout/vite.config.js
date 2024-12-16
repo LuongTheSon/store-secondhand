@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+  base: '/store-secondhand/layout/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -21,5 +22,8 @@ export default defineConfig({
       }
     },
     postcss: path.resolve(__dirname, './postcss.config.js')
+  },
+  build: {
+    outDir: 'dist'
   }
 });
