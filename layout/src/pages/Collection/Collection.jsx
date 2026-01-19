@@ -4,12 +4,13 @@ import styles from './styles.module.scss';
 import Title from '@components/Title/Title';
 import ItemProduct from '@components/ItemProduct/ItemProduct';
 import Subscribe from '@components/Subscribe/Subscribe';
+import Loading from '@components/Loading/Loading';
 import usePagination from '@hook/usePagination';
 
 const ITEMS_PER_PAGE = 9;
 
 const Collection = () => {
-  const { products, search, showSearch } = useContext(ShopContext);
+  const { products, loading, error, search, showSearch } = useContext(ShopContext);
   const [fillerProduct, setFillerProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
@@ -42,7 +43,7 @@ const Collection = () => {
     paginationBtnDisable
   } = styles;
 
-  const toogleCategory = (e) => {
+  const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
       setCategory((prev) => prev.filter((item) => item !== e.target.value));
     } else {
@@ -59,51 +60,66 @@ const Collection = () => {
   };
 
   // Apply Filters and Sort
-  const applyFilterAndSort = () => {
-    let productsCopy = [...products];
-
-    // Apply filters
-    if (category.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        category.includes(item.category)
-      );
-    }
-
-    if (subCategory.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        subCategory.includes(item.subCategory)
-      );
-    }
-
-    if (search && showSearch) {
-      productsCopy = productsCopy.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    // Apply sorting
-    switch (sortType) {
-      case 'low-high':
-        productsCopy.sort((a, b) => a.price - b.price);
-        break;
-      case 'high-low':
-        productsCopy.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        break;
-    }
-
-    setFillerProduct(productsCopy);
-    setCurrentPage(1);
-  };
-
   useEffect(() => {
+    const applyFilterAndSort = () => {
+      let productsCopy = [...products];
+
+      // Apply filters
+      if (category.length > 0) {
+        productsCopy = productsCopy.filter((item) => category.includes(item.category));
+      }
+
+      if (subCategory.length > 0) {
+        productsCopy = productsCopy.filter((item) => subCategory.includes(item.subCategory));
+      }
+
+      if (search && showSearch) {
+        productsCopy = productsCopy.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+
+      // Apply sorting
+      switch (sortType) {
+        case 'low-high':
+          productsCopy.sort((a, b) => a.price - b.price);
+          break;
+        case 'high-low':
+          productsCopy.sort((a, b) => b.price - a.price);
+          break;
+        default:
+          break;
+      }
+
+      setFillerProduct(productsCopy);
+      setCurrentPage(1);
+    };
+
     applyFilterAndSort();
-  }, [category, subCategory, search, showSearch, sortType]);
+  }, [products, category, subCategory, search, showSearch, sortType, setCurrentPage]);
 
   useEffect(() => {
     setFillerProduct(products);
   }, [products]);
+
+  // Show loading state
+  if (loading) {
+    return <Loading />;
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <section>
+        <div className='row'>
+          <div style={{ textAlign: 'center', padding: '40px', color: 'red' }}>
+            <p>Lỗi: {error}</p>
+            <button onClick={() => window.location.reload()}>Thử lại</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -116,30 +132,15 @@ const Collection = () => {
               <div className={filtersBox}>
                 <p className={filtersBoxName}>Categories</p>
                 <label className={filtersCheckbox} htmlFor='nike'>
-                  <input
-                    type='checkbox'
-                    id='nike'
-                    value={'nike'}
-                    onChange={toogleCategory}
-                  />
+                  <input type='checkbox' id='nike' value={'nike'} onChange={toggleCategory} />
                   Nike
                 </label>
                 <label className={filtersCheckbox} htmlFor='adidas'>
-                  <input
-                    type='checkbox'
-                    id='adidas'
-                    value={'adidas'}
-                    onChange={toogleCategory}
-                  />
+                  <input type='checkbox' id='adidas' value={'adidas'} onChange={toggleCategory} />
                   Adidas
                 </label>
                 <label className={filtersCheckbox} htmlFor='puma'>
-                  <input
-                    type='checkbox'
-                    id='puma'
-                    value={'puma'}
-                    onChange={toogleCategory}
-                  />
+                  <input type='checkbox' id='puma' value={'puma'} onChange={toggleCategory} />
                   Puma
                 </label>
                 <label className={filtersCheckbox} htmlFor='converse'>
@@ -147,17 +148,12 @@ const Collection = () => {
                     type='checkbox'
                     id='converse'
                     value={'converse'}
-                    onChange={toogleCategory}
+                    onChange={toggleCategory}
                   />
                   Converse
                 </label>
                 <label className={filtersCheckbox} htmlFor='vans'>
-                  <input
-                    type='checkbox'
-                    id='vans'
-                    value={'vans'}
-                    onChange={toogleCategory}
-                  />
+                  <input type='checkbox' id='vans' value={'vans'} onChange={toggleCategory} />
                   Vans
                 </label>
               </div>
@@ -182,12 +178,7 @@ const Collection = () => {
                   Low Top
                 </label>
                 <label className={filtersCheckbox} htmlFor='mule'>
-                  <input
-                    type='checkbox'
-                    id='mule'
-                    value={'mule'}
-                    onChange={toogleSubCategory}
-                  />
+                  <input type='checkbox' id='mule' value={'mule'} onChange={toogleSubCategory} />
                   Mule
                 </label>
               </div>
@@ -197,10 +188,7 @@ const Collection = () => {
                 <Title text1={'ALL'} text2={'COLLECTIONS'} />
 
                 {/* Sort Product */}
-                <select
-                  onChange={(e) => setSortType(e.target.value)}
-                  className={productSelect}
-                >
+                <select onChange={(e) => setSortType(e.target.value)} className={productSelect}>
                   <option value='relavent'>Sort by: Relavent</option>
                   <option value='low-high'>Sort by: Low to High</option>
                   <option value='high-low'>Sort by: High to Low</option>
@@ -222,18 +210,12 @@ const Collection = () => {
 
               {/* Pagination */}
               <div className={pagination}>
-                <button
-                  className={paginationBtn}
-                  disabled={currentPage === 1}
-                  onClick={prevPage}
-                >
+                <button className={paginationBtn} disabled={currentPage === 1} onClick={prevPage}>
                   Prev
                 </button>
 
                 <button
-                  className={`${paginationBtn} ${
-                    currentPage === 1 ? styles.active : ''
-                  }`}
+                  className={`${paginationBtn} ${currentPage === 1 ? styles.active : ''}`}
                   onClick={() => jumpToPage(1)}
                 >
                   1
@@ -248,9 +230,7 @@ const Collection = () => {
                 {getMiddlePages().map((page) => (
                   <button
                     key={page}
-                    className={`${paginationBtn} ${
-                      currentPage === page ? styles.active : ''
-                    }`}
+                    className={`${paginationBtn} ${currentPage === page ? styles.active : ''}`}
                     onClick={() => jumpToPage(page)}
                   >
                     {page}
@@ -258,19 +238,14 @@ const Collection = () => {
                 ))}
 
                 {currentPage < totalPages - 2 && (
-                  <button
-                    className={`${paginationBtn} ${paginationBtnDisable}`}
-                    disabled
-                  >
+                  <button className={`${paginationBtn} ${paginationBtnDisable}`} disabled>
                     ...
                   </button>
                 )}
 
                 {totalPages > 1 && (
                   <button
-                    className={`${paginationBtn} ${
-                      currentPage === totalPages ? 'active' : ''
-                    }`}
+                    className={`${paginationBtn} ${currentPage === totalPages ? 'active' : ''}`}
                     onClick={() => jumpToPage(totalPages)}
                   >
                     {totalPages}

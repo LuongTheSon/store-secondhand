@@ -46,9 +46,7 @@ const Contact = () => {
               </div>
               <div className={inforItem}>
                 <p className={inforHead}>Careers</p>
-                <p className={inforTxt}>
-                  Learn more about our teams and job openings.
-                </p>
+                <p className={inforTxt}>Learn more about our teams and job openings.</p>
                 <div className={inforBtn}>
                   <Link>Explore Jobs</Link>
                 </div>

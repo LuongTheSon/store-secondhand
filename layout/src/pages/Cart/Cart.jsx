@@ -11,19 +11,23 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
-    const tempData = [];
-    for (const items in cartItems) {
-      for (const item in cartItems[items]) {
-        if (cartItems[items][item] > 0) {
-          tempData.push({
-            _id: items,
-            size: item,
-            quantity: cartItems[items][item]
-          });
+    if (cartItems && Object.keys(cartItems).length > 0) {
+      const tempData = [];
+      for (const items in cartItems) {
+        for (const item in cartItems[items]) {
+          if (cartItems[items][item] > 0) {
+            tempData.push({
+              _id: items,
+              size: item,
+              quantity: cartItems[items][item]
+            });
+          }
         }
       }
+      setCartData(tempData);
+    } else {
+      setCartData([]);
     }
-    setCartData(tempData);
   }, [cartItems]);
 
   const {
@@ -51,9 +55,7 @@ const Cart = () => {
         <Title text1={'YOUR'} text2={'CART'} />
         <div className={cartList}>
           {cartData.map((item, index) => {
-            const productData = products.find(
-              (product) => product._id === item._id
-            );
+            const productData = products.find((product) => product._id === item._id);
 
             return (
               <div className={cartItem} key={index}>
@@ -65,9 +67,7 @@ const Cart = () => {
                     <div className={cartBoxName}>
                       <p className={cartName}>{productData.name}</p>
                       <div className={cartBoxPrice}>
-                        <span className={cartPrice}>
-                          {formatCurrency(productData.price)}
-                        </span>
+                        <span className={cartPrice}>{formatCurrency(productData.price)}</span>
                         <span className={cartSize}>{item.size}</span>
                       </div>
                     </div>
@@ -75,11 +75,7 @@ const Cart = () => {
                       onClick={(e) =>
                         e.target.value === '' || e.target.value === '0'
                           ? null
-                          : updateCartCount(
-                              item._id,
-                              item.size,
-                              Number(e.target.value)
-                            )
+                          : updateCartCount(item._id, item.size, Number(e.target.value))
                       }
                       type='number'
                       min={1}

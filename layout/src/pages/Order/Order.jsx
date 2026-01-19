@@ -33,72 +33,36 @@ const Order = () => {
               <form action=''>
                 <div className={formRow}>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='First name'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='First name' className={formInputStyle} />
                   </div>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='Last name'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='Last name' className={formInputStyle} />
                   </div>
                 </div>
                 <div className={formRow}>
-                  <input
-                    type='email'
-                    placeholder='Email addess'
-                    className={formInputStyle}
-                  />
+                  <input type='email' placeholder='Email addess' className={formInputStyle} />
                 </div>
                 <div className={formRow}>
-                  <input
-                    type='text'
-                    placeholder='Street'
-                    className={formInputStyle}
-                  />
+                  <input type='text' placeholder='Street' className={formInputStyle} />
                 </div>
                 <div className={formRow}>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='City'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='City' className={formInputStyle} />
                   </div>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='State'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='State' className={formInputStyle} />
                   </div>
                 </div>
                 <div className={formRow}>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='Zip code'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='Zip code' className={formInputStyle} />
                   </div>
                   <div className={formCol}>
-                    <input
-                      type='text'
-                      placeholder='Country'
-                      className={formInputStyle}
-                    />
+                    <input type='text' placeholder='Country' className={formInputStyle} />
                   </div>
                 </div>
                 <div className={formRow}>
-                  <input
-                    type='text'
-                    placeholder='Phone'
-                    className={formInputStyle}
-                  />
+                  <input type='text' placeholder='Phone' className={formInputStyle} />
                 </div>
               </form>
             </div>
@@ -107,19 +71,11 @@ const Order = () => {
             <CartTotal />
             <div className={paymentBox}>
               <div className={paymentItem} onClick={() => setPayment('cod')}>
-                <p
-                  className={`${paymentDot} ${
-                    payment === 'cod' ? styles.active : ''
-                  }`}
-                ></p>
+                <p className={`${paymentDot} ${payment === 'cod' ? styles.active : ''}`}></p>
                 <p className={paymentName}>Thanh toán khi nhận hàng (COD)</p>
               </div>
               <div className={paymentItem} onClick={() => setPayment('bank')}>
-                <p
-                  className={`${paymentDot} ${
-                    payment === 'bank' ? styles.active : ''
-                  }`}
-                ></p>
+                <p className={`${paymentDot} ${payment === 'bank' ? styles.active : ''}`}></p>
                 <p className={paymentName}>Thanh toán bằng chuyển khoản</p>
               </div>
             </div>

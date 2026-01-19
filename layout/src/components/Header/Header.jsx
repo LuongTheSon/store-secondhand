@@ -33,7 +33,7 @@ const Header = () => {
       setVisible(false);
       setShowSearch(false);
     }
-  }, [location]);
+  }, [location, setShowSearch]);
 
   return (
     <header className={header} id='header'>
@@ -43,16 +43,10 @@ const Header = () => {
             <img src={images.logo} className='fit' alt='header logo' />
           </Link>
         </h1>
-        <div
-          className={`${isOpen ? styles.openHeaderMenu : ''}  ${headerMenu}`}
-        >
+        <div className={`${isOpen ? styles.openHeaderMenu : ''}  ${headerMenu}`}>
           <ul>
             <li>
-              <NavLink
-                className={getNavLinkClass}
-                to='/'
-                onClick={() => setIsOpen(false)}
-              >
+              <NavLink className={getNavLinkClass} to='/' onClick={() => setIsOpen(false)}>
                 HOME
               </NavLink>
             </li>
@@ -66,20 +60,12 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={getNavLinkClass}
-                to='/about'
-                onClick={() => setIsOpen(false)}
-              >
+              <NavLink className={getNavLinkClass} to='/about' onClick={() => setIsOpen(false)}>
                 ABOUT
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={getNavLinkClass}
-                to='/contact'
-                onClick={() => setIsOpen(false)}
-              >
+              <NavLink className={getNavLinkClass} to='/contact' onClick={() => setIsOpen(false)}>
                 CONTACT
               </NavLink>
             </li>

@@ -4,16 +4,9 @@ import React, { useContext } from 'react';
 import styles from './styles.module.scss';
 
 const CartTotal = () => {
-  const { delivery_free, getCartAmount, formatCurrency } =
-    useContext(ShopContext);
+  const { delivery_free, getCartAmount, formatCurrency } = useContext(ShopContext);
 
-  const {
-    totalCart,
-    totalList,
-    totalItemName,
-    totalItemValue,
-    totalItemTotal
-  } = styles;
+  const { totalCart, totalList, totalItemName, totalItemValue, totalItemTotal } = styles;
 
   return (
     <div className={totalCart}>
@@ -32,9 +25,7 @@ const CartTotal = () => {
         <li>
           <p className={totalItemTotal}>Total</p>
           <p className={totalItemValue}>
-            {getCartAmount() === 0
-              ? '0'
-              : formatCurrency(getCartAmount() + delivery_free)}
+            {getCartAmount() === 0 ? '0' : formatCurrency(getCartAmount() + delivery_free)}
           </p>
         </li>
       </ul>

@@ -58,13 +58,7 @@ const Banner = () => {
               </Link>
             </div>
             <div className={bannerSmallItem}>
-              <Link
-                to='bestseller'
-                spy={true}
-                smooth={true}
-                offset={-120}
-                duration={500}
-              >
+              <Link to='bestseller' spy={true} smooth={true} offset={-120} duration={500}>
                 <figure className={bannerImg}>
                   <img src={images.banner_3} alt='' />
                 </figure>

@@ -33,21 +33,14 @@ const Product = () => {
     descriptionSub
   } = styles;
 
-  const fetchProductData = async () => {
-    products.map((item) => {
-      if (item._id === productId) {
-        setProductData(item);
-        setThumnail(item.image[0]);
-        return null;
-      }
-    });
-  };
-
   useEffect(() => {
-    fetchProductData();
-  }, [productId]);
-
-  console.log(productData);
+    // Find product by ID - more efficient than forEach
+    const product = products.find((item) => item._id === productId);
+    if (product) {
+      setProductData(product);
+      setThumnail(product.image[0]);
+    }
+  }, [productId, products]);
 
   return productData ? (
     <section>
@@ -104,10 +97,7 @@ const Product = () => {
                 </button>
               ))}
             </div>
-            <button
-              onClick={() => addToCart(productData._id, size)}
-              className={inforButton}
-            >
+            <button onClick={() => addToCart(productData._id, size)} className={inforButton}>
               ADD TO CART
             </button>
             <p className={inforCommit}>
@@ -125,28 +115,23 @@ const Product = () => {
           <h2 className={descriptionTtl}>Description</h2>
           <div className={descriptionSub}>
             <p>
-              An e-commerce website is an online platform that facilitates the
-              buying and selling of products or services over the internet. It
-              serves as a virtual marketplace where businesses and individuals
-              can showcase their products, interact with customers, and conduct
-              transactions without the need for a physical presence. E-commerce
-              websites have gained immense popularity due to their convenience,
-              accessibility, and the global reach they offer.
+              An e-commerce website is an online platform that facilitates the buying and selling of
+              products or services over the internet. It serves as a virtual marketplace where
+              businesses and individuals can showcase their products, interact with customers, and
+              conduct transactions without the need for a physical presence. E-commerce websites
+              have gained immense popularity due to their convenience, accessibility, and the global
+              reach they offer.
             </p>
             <p>
-              E-commerce websites typically display products or services along
-              with detailed descriptions, images, prices, and any available
-              variations (e.g., sizes, colors). Each product usually has its own
-              dedicated page with relevant information.
+              E-commerce websites typically display products or services along with detailed
+              descriptions, images, prices, and any available variations (e.g., sizes, colors). Each
+              product usually has its own dedicated page with relevant information.
             </p>
           </div>
         </div>
 
         {/* Related Detail */}
-        <RelatedProduct
-          category={productData.category}
-          subCategory={productData.subCategory}
-        />
+        <RelatedProduct category={productData.category} subCategory={productData.subCategory} />
       </div>
     </section>
   ) : (

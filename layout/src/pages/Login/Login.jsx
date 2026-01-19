@@ -3,8 +3,7 @@ import styles from './styles.module.scss';
 
 const Login = () => {
   const [currentState, setCurrentState] = useState('LOGIN');
-  const { login, loginTitle, loginForm, loginRow, loginChange, loginButton } =
-    styles;
+  const { login, loginTitle, loginForm, loginRow, loginChange, loginButton } = styles;
   return (
     <section className={login}>
       <div className='row'>
@@ -28,14 +27,10 @@ const Login = () => {
               {currentState === 'LOGIN' ? (
                 <>
                   <p>Forgot your password</p>
-                  <p onClick={() => setCurrentState('SIGN UP')}>
-                    Create account
-                  </p>
+                  <p onClick={() => setCurrentState('SIGN UP')}>Create account</p>
                 </>
               ) : (
-                <p onClick={() => setCurrentState('LOGIN')}>
-                  You have a account
-                </p>
+                <p onClick={() => setCurrentState('LOGIN')}>You have a account</p>
               )}
             </div>
             <button className={loginButton}>

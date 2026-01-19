@@ -62,7 +62,9 @@
       font-weight: 400;
       color: $primary_color;
       text-align: center;
-      transition: 0.3s background-color, 0.3s color ease-out;
+      transition:
+        0.3s background-color,
+        0.3s color ease-out;
 
       &:hover {
         background-color: #000;
@@ -194,7 +196,9 @@
       font-weight: 400;
       color: $primary_color;
       text-align: center;
-      transition: 0.3s background-color, 0.3s color ease-out;
+      transition:
+        0.3s background-color,
+        0.3s color ease-out;
 
       &:hover {
         background-color: #000;

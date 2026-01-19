@@ -1,17 +1,47 @@
-import { createContext, useState } from 'react';
-import { products } from '@assets/images/assets';
+import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 // Create the ShopContext
 export const ShopContext = createContext();
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ShopContextProvider = (props) => {
+  const [products, setProducts] = useState([]); // Products from API
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
   const [search, setSearch] = useState(''); // Search term state
   const [showSearch, setShowSearch] = useState(false); // Control search bar visibility
   const [cartItems, setCartItems] = useState({}); // Cart items state
   const delivery_free = 40000; // Distance cost
-  const navigate = useNavigate(); // React Router's navigation hook
+  const navigate = useNavigate(); // React router navigation hook
+
+  // Fetch products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_URL}/products`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setProducts(data);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching products from API:', err);
+        setError(err.message);
+        toast.error('Không thể tải sản phẩm. Vui lòng thử lại!');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   // Format currency to Vietnamese Dong (VNĐ)
   const formatCurrency = (amount) => {
@@ -82,12 +112,14 @@ const ShopContextProvider = (props) => {
 
   // Clear the entire cart
   const clearCart = () => {
-    setCartItems([]);
+    setCartItems({});
   };
 
   // Context value object
   const value = {
     products,
+    loading,
+    error,
     formatCurrency,
     search,
     setSearch,
@@ -103,9 +135,7 @@ const ShopContextProvider = (props) => {
     clearCart
   };
 
-  return (
-    <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
-  );
+  return <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>;
 };
 
 export default ShopContextProvider;
